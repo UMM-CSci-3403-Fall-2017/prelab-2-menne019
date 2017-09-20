@@ -1,4 +1,3 @@
 # Leak report
 
-_Use this document to describe whatever memory leaks you find in `clean_whitespace.c` and how you might fix them. You should also probably remove this explanatory text._
-
+When running valgrind on check_whitespace it showed that there was a memory leak that definitley lost 46 bytes in 6 blocks. The total heap usage was 7 allocs but only 1 free call so it isn't freeing somewhere. I noticed that in is_clean it calls strip on a string but doesn't free the allocated memory. I tried using free(clean) to fix it however it gave me one error. I then checked if the length of the string is greater than 0, then free(clean). This worked and there are no leaking and 0 errors.

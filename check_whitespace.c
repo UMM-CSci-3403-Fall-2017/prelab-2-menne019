@@ -45,7 +45,6 @@ char* strip(char* str) {
   }
   // Place the null terminator at the end of the result string.
   result[i-first_non_space] = '\0';
-
   
   return result;
   
@@ -68,10 +67,10 @@ int is_clean(char* str) {
   // 0 if they're equal, and a positive value if the first is
   // greater than the second.
   result = strcmp(str, cleaned);
-  if (strlen(cleaned) > 0) {
+  {  if (strlen(cleaned) > 0) 
     free(cleaned);
-      }
   return result == 0;
+  }
 }
 
 int main() {
